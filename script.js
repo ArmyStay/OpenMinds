@@ -172,6 +172,60 @@ document.addEventListener('DOMContentLoaded', function() {
 
 */
 
+// Know more pop up box code
+var knowMoreModal = document.getElementById("knowMoreModal");
+var knowMoreBtn = document.getElementById("knowMoreBtn");
+var closeKnowMoreModal = document.getElementById("closeKnowMoreModal");
+var knowMoreText = document.getElementById("knowMoreText");
+
+knowMoreText.innerHTML = "Your large text here (fits about 80 to 100 words if more pls inform)";
+knowMoreBtn.onclick = function() {
+  knowMoreModal.style.display = "block";
+}
+closeKnowMoreModal.onclick = function() {
+  knowMoreModal.style.display = "none";
+}
+
+// modal window to close it when clicked outside
+window.onclick = function(event) {
+  if (event.target == knowMoreModal) {
+    knowMoreModal.style.display = "none";
+  }
+}
+// confetti 
+const confettiContainer = document.querySelector('.wrapper');
+const colors = ['#d13447', '#ffbf00', '#263672'];
+
+function createConfetti() {
+  for (let i = 0; i < 150; i++) {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.width = `${Math.random() * 8}px`;
+    confetti.style.height = `${confetti.style.width * 0.4}px`;
+    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.position = 'absolute';
+    confetti.style.top = `${Math.random() * (confettiContainer.offsetHeight - 10)}px`;
+    confetti.style.left = `${Math.random() * (confettiContainer.offsetWidth - 10)}px`;
+    confetti.style.opacity = `${Math.random() + 0.5}`;
+    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+    confetti.style.animation = `drop ${Math.random() * 4 + 4}s ${Math.random() * 2}s infinite`;
+    confettiContainer.appendChild(confetti);
+  }
+}
+
+createConfetti();
+
+function animateConfetti() {
+  const confettiElements = document.querySelectorAll('.confetti');
+  confettiElements.forEach((confetti) => {
+    const top = Math.random() * (confettiContainer.offsetHeight - 10) + 'px';
+    const left = Math.random() * (confettiContainer.offsetWidth - 10) + 'px';
+    confetti.style.top = top;
+    confetti.style.left = left;
+  });
+}
+
+setInterval(animateConfetti, 2000);
 
 //programs card
 document.addEventListener('DOMContentLoaded', function() {
